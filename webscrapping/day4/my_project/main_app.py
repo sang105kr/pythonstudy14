@@ -19,3 +19,5 @@ def run_app():
 # main_app모듈에서 직접 실행시에만 run_app()호출됨
 if __name__ == "__main__":
   run_app()
+  help(basic.add)
+  print(dir(basic)) # dir(): 패키지 or 모듈 안에 무엇이 있는지 파악

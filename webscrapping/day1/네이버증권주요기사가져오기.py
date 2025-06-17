@@ -13,8 +13,8 @@ soup = BeautifulSoup(res.content, 'lxml')
 
 # 주요기사 제목
 item_list = soup.select("#content > div.article > div.section > div.news_area._replaceNewsLink > div > ul > li")
-print(item_list)
-print(len(item_list))
+# print(item_list)
+# print(len(item_list))
 
 #뉴스 링크를 저장할 리스트
 links = []
@@ -34,15 +34,15 @@ news_bodies = []
 ## 주요기사 링크 주소가 동적으로 변경되어 아래 코드가 정상적으로 수행이 안됨.
 
 # print(news_dict.keys())
-# news_link_list = news_dict.keys()
+news_link_list = news_dict.keys()
 #
-# for link  in news_link_list:
-#   res = requests.get(url)
-#   soup = BeautifulSoup(res.content,'lxml')
-#   element = soup.select_one('#dic_area')
-#
-#   if element:
-#     text = element.get_text(strip=True) # HTML 태그를 제고하고 순수 텍스트만 얻기
-#     news_bodies.append(text)
-#
-# print(news_bodies)
+for link  in news_link_list:
+  res = requests.get(url)
+  soup = BeautifulSoup(res.content,'lxml')
+  element = soup.select_one('#dic_area')
+
+  if element:
+    text = element.get_text(strip=True) # HTML 태그를 제거하고 순수 텍스트만 얻기
+    news_bodies.append(text)
+
+print(news_bodies)

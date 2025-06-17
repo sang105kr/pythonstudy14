@@ -1,5 +1,5 @@
 import requests
-import pandas as pd
+import pandas as pd   # 2차원 데이터 구조를 다룰때 사용하는 패키지
 
 numOfRows = 4207
 pageNo = 1
@@ -11,7 +11,7 @@ _type = 'json'
 url = f'http://apis.data.go.kr/B551011/GoCamping/basedList?numOfRows={numOfRows}&pageNo={pageNo}&MobileOS={MobileOS}&MobileApp={MobileApp}&serviceKey={serviceKey}&_type={_type}'
 
 res = requests.get(url)
-camping_place_dict = res.json()
+camping_place_dict = res.json()  #json포맷 문자열 => dict로 변환
 
 #캠핑장 총수
 print(camping_place_dict['response']['body']['totalCount'])
@@ -20,4 +20,6 @@ print(type(camping_place_list))
 # for camping_place in camping_place_list:
 #   print(camping_place['facltNm'])
 
-pd.DataFrame(camping_place_list).to_excel('캠핑장.xlsx')
+df = pd.DataFrame(camping_place_list)
+df.to_excel('캠핑장.xlsx',index=False)
+df.to_csv('캠핑장.csv',index=False)
