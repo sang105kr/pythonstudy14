@@ -14,7 +14,7 @@ driver = webdriver.Chrome(options=chrome_option)
 driver.get(url)
 
 # 페이지가 모드 로드될때 까지 최대 1초 대기
-driver.implicitly_wait(1)
+driver.implicitly_wait(2)
 
 #온도 요소 찾기
 ele = driver.find_element(by=By.CSS_SELECTOR,
